@@ -1,0 +1,925 @@
+# DESARROLLO DE UN LABORATORIO VIRTUAL INTERACTIVO DE CIRCUITOS ELÉCTRICOS DC
+
+## 1. ROL Y OBJETIVO GENERAL
+
+Actúa como un equipo multidisciplinario de expertos compuesto por:
+
+- Ingeniero eléctrico especializado en análisis de circuitos DC.
+- Ingeniero de software especializado en aplicaciones web interactivas.
+- Desarrollador de simuladores educativos y visualizaciones científicas.
+- Especialista en diseño instruccional universitario.
+- Diseñador UX/UI de aplicaciones educativas.
+- Experto en visualización matemática y simulación de sistemas físicos.
+
+Tu objetivo es DISEÑAR E IMPLEMENTAR UNA APLICACIÓN WEB COMPLETAMENTE FUNCIONAL denominada:
+
+"LABORATORIO VIRTUAL DE CIRCUITOS DC: ANÁLISIS, SIMULACIÓN Y DECISIONES TÉCNICAS"
+
+Esta aplicación será un recurso educativo para la asignatura Circuitos Eléctricos de la Universidad Técnica Particular de Loja (UTPL), correspondiente al tercer ciclo de la carrera de Redes y Analítica de Datos, modalidad en línea.
+
+IMPORTANTE: No quiero un prototipo estático, una presentación de conceptos ni un conjunto de imágenes de circuitos. Quiero un laboratorio virtual realmente interactivo, donde el estudiante manipule componentes, modifique parámetros eléctricos, realice mediciones, efectúe cálculos, tome decisiones y observe inmediatamente los cambios en el comportamiento de los circuitos.
+
+La prioridad es combinar precisión científica, calidad visual, interactividad significativa y aprendizaje mediante experimentación.
+
+## 2. ALCANCE ACADÉMICO
+
+El recurso corresponde a la SEMANA 1 de Circuitos Eléctricos.
+
+Los contenidos estudiados son:
+
+1. Carga y corriente eléctrica.
+2. Tensión eléctrica y referencias de polaridad.
+3. Potencia y energía eléctrica.
+4. Elementos básicos de circuitos.
+5. Medición de magnitudes eléctricas.
+6. Resistencia, resistividad y conductancia.
+7. Ley de Ohm.
+8. Potencia disipada en resistores.
+9. Circuito abierto y cortocircuito.
+10. Asociaciones de resistores en serie, paralelo y mixtas.
+
+La aplicación debe integrar estos contenidos en situaciones prácticas progresivas.
+
+NO desarrollar análisis nodal, análisis de mallas, métodos sistemáticos mediante matrices, teoremas de Thévenin y Norton, capacitores, inductores ni circuitos AC.
+
+Se pueden utilizar las relaciones básicas de conservación de corriente y tensión necesarias para resolver asociaciones serie-paralelo, sin exigir el conocimiento formal de las leyes de Kirchhoff, que se estudiarán posteriormente.
+
+Todos los circuitos principales deben trabajar en corriente directa y régimen estacionario.
+
+## 3. REQUISITOS TECNOLÓGICOS
+
+Desarrolla una aplicación web moderna, responsiva y completamente funcional.
+
+Puedes seleccionar libremente las tecnologías que consideres más apropiadas. Se recomienda evaluar React, TypeScript, SVG interactivo, bibliotecas matemáticas y herramientas de visualización de datos.
+
+No te limites a HTML, CSS y JavaScript tradicionales si una arquitectura moderna permite una mejor solución.
+
+Requisitos:
+
+- Código modular, mantenible y organizado.
+- Motor de cálculo eléctrico independiente de la interfaz.
+- Cálculo automático y consistente de tensiones, corrientes, resistencias y potencias.
+- Actualización inmediata de resultados cuando cambien los parámetros.
+- Circuitos dibujados mediante componentes vectoriales, preferiblemente SVG.
+- Animaciones que representen el sentido convencional de corriente.
+- Gráficos dinámicos cuando ayuden a interpretar relaciones eléctricas.
+- Representación matemática legible mediante LaTeX, KaTeX, MathJax o una alternativa apropiada.
+- Controles interactivos para fuentes, resistores, interruptores e instrumentos.
+- Validación de entradas y tratamiento de condiciones eléctricas límite.
+- Adaptación completa a computadoras, portátiles y tabletas.
+- No depender de imágenes externas para representar los circuitos.
+- No requerir conexión con servicios externos para realizar los cálculos.
+- No utilizar valores precalculados como sustituto del motor de simulación.
+
+Si utilizas un framework, organiza el código en componentes reutilizables.
+
+La aplicación debe ejecutarse correctamente en el entorno de Google AI Studio y poder prepararse posteriormente para su publicación como sitio web independiente.
+
+## 4. ARQUITECTURA EDUCATIVA
+
+La aplicación debe organizarse en cuatro módulos principales:
+
+MÓDULO 1. CIRCUITOS RESISTIVOS EN SERIE.
+
+MÓDULO 2. CIRCUITOS RESISTIVOS EN PARALELO.
+
+MÓDULO 3. CIRCUITOS RESISTIVOS MIXTOS.
+
+MÓDULO 4. DESAFÍO DE INGENIERÍA: ALIMENTACIÓN DC DE EQUIPOS DE RED.
+
+Los módulos deben encontrarse claramente identificados mediante pestañas o un sistema de navegación intuitivo.
+
+El estudiante podrá acceder libremente a cualquiera de los módulos, pero la interfaz debe comunicar una progresión recomendada de dificultad.
+
+Cada módulo incluirá:
+
+A. Breve explicación del objetivo.
+
+B. Circuito esquemático interactivo.
+
+C. Controles de parámetros eléctricos.
+
+D. Panel de mediciones y resultados.
+
+E. Desarrollo matemático.
+
+F. Actividades de predicción y comprobación.
+
+G. Retroalimentación técnica.
+
+H. Conclusiones e interpretación física.
+
+No construyas cuatro páginas independientes sin conexión pedagógica. Todos los módulos deben compartir un diseño consistente y reutilizar los instrumentos, componentes y herramientas de análisis.
+
+## 5. MÓDULO 1: CIRCUITOS RESISTIVOS EN SERIE
+
+### Circuito inicial
+
+Fuente DC: 12 V.
+
+Tres resistores conectados en serie:
+
+R1 = 1 kΩ.
+
+R2 = 2 kΩ.
+
+R3 = 3 kΩ.
+
+El esquema debe representar correctamente la fuente y los tres resistores conectados en una sola trayectoria cerrada.
+
+### Parámetros modificables
+
+Permitir modificar:
+
+- Tensión de alimentación.
+- Resistencia R1.
+- Resistencia R2.
+- Resistencia R3.
+- Sentido de referencia de corriente.
+- Referencia de polaridad para las mediciones.
+
+Utilizar controles deslizantes y campos numéricos editables.
+
+Los valores deben mantenerse dentro de intervalos físicos y matemáticos apropiados.
+
+### Cálculos automáticos
+
+Mostrar:
+
+- Resistencia equivalente.
+- Corriente total.
+- Tensión sobre cada resistor.
+- Potencia disipada en cada resistor.
+- Potencia total entregada por la fuente.
+- Comprobación del balance de potencia.
+
+Para los valores iniciales:
+
+Req = 6 kΩ.
+
+I = 2 mA.
+
+V1 = 2 V.
+
+V2 = 4 V.
+
+V3 = 6 V.
+
+Ptotal = 24 mW.
+
+### Visualización
+
+Representar la corriente convencional mediante partículas animadas sobre los conductores.
+
+La velocidad o densidad visual de las partículas puede representar cualitativamente la intensidad de corriente. Evitar afirmar que representa literalmente la velocidad de desplazamiento de los electrones.
+
+Mostrar las caídas de tensión junto a cada resistor.
+
+Representar gráficamente la potencia de cada resistor mediante barras proporcionales.
+
+Cuando se modifica una resistencia, actualizar simultáneamente todas las magnitudes dependientes.
+
+### Actividad de razonamiento
+
+Antes de modificar R2, preguntar:
+
+"Si aumenta únicamente R2 y mantiene constante la tensión de alimentación, ¿qué ocurrirá con la corriente total del circuito?"
+
+El estudiante deberá seleccionar una predicción:
+
+- Aumentará.
+- Disminuirá.
+- Permanecerá constante.
+
+No revelar inmediatamente el resultado.
+
+Después de registrar la predicción, permitir ejecutar el cambio y comparar el comportamiento observado con la respuesta.
+
+Proporcionar retroalimentación explicativa basada en la Ley de Ohm.
+
+Incorporar otras actividades sobre distribución de tensión, potencia y resistencia equivalente.
+
+### Reducción del circuito
+
+Incluir una función que permita sustituir visualmente los tres resistores por una única resistencia equivalente.
+
+Mostrar la correspondencia entre el circuito original y su circuito equivalente.
+
+El estudiante debe comprobar que la corriente suministrada por la fuente no cambia después de realizar la sustitución.
+
+## 6. MÓDULO 2: CIRCUITOS RESISTIVOS EN PARALELO
+
+### Circuito inicial
+
+Fuente DC: 12 V.
+
+Tres resistores conectados en paralelo:
+
+R1 = 6 kΩ.
+
+R2 = 3 kΩ.
+
+R3 = 2 kΩ.
+
+Cada resistor debe representar una rama independiente conectada al mismo par de nodos.
+
+### Parámetros modificables
+
+- Tensión de alimentación.
+- Valores de R1, R2 y R3.
+- Interruptor individual para cada rama.
+- Referencia de corriente de cada rama.
+- Referencia de polaridad de las mediciones.
+
+### Cálculos
+
+Mostrar:
+
+- Resistencia equivalente.
+- Conductancia de cada rama.
+- Conductancia equivalente.
+- Tensión común.
+- Corriente de cada resistor.
+- Corriente total suministrada.
+- Potencia de cada rama.
+- Potencia total.
+
+Para el circuito inicial:
+
+Req = 1 kΩ.
+
+I1 = 2 mA.
+
+I2 = 4 mA.
+
+I3 = 6 mA.
+
+Itotal = 12 mA.
+
+### Interactividad
+
+Permitir abrir o cerrar individualmente los interruptores.
+
+Cuando se desconecta una rama, debe desaparecer la corriente correspondiente y actualizarse automáticamente la resistencia equivalente y la corriente total.
+
+Cuando todas las ramas estén abiertas, el circuito debe comportarse correctamente como un circuito abierto.
+
+La tensión sobre las ramas conectadas debe corresponder a la tensión aplicada por la fuente ideal.
+
+El sistema debe diferenciar entre una rama abierta y una rama de resistencia finita.
+
+### Actividades
+
+Plantear preguntas de predicción como:
+
+"¿Qué ocurrirá con la resistencia equivalente si conecta una nueva rama resistiva en paralelo?"
+
+"¿Qué ocurrirá con la corriente total demandada a la fuente?"
+
+"¿La corriente de las otras ramas cambiará si la fuente mantiene una tensión ideal constante?"
+
+El estudiante debe registrar su predicción antes de ejecutar la modificación.
+
+### Visualización
+
+Representar la corriente en cada rama mediante animaciones independientes.
+
+Mostrar cuantitativamente cómo se distribuye la corriente total.
+
+Incluir un gráfico de barras de corrientes y otro de potencias por rama.
+
+Incorporar la posibilidad de sustituir la asociación por una resistencia equivalente y comprobar el comportamiento visto desde la fuente.
+
+## 7. MÓDULO 3: CIRCUITOS RESISTIVOS MIXTOS
+
+Este módulo debe presentar una dificultad superior a los anteriores.
+
+### Circuito inicial
+
+Fuente DC: 12 V.
+
+R1 = 1 kΩ conectado en serie con una asociación en paralelo formada por:
+
+R2 = 2 kΩ.
+
+R3 = 2 kΩ.
+
+### Cálculos esperados
+
+R23 = 1 kΩ.
+
+Req = 2 kΩ.
+
+Itotal = 6 mA.
+
+VR1 = 6 V.
+
+VR2 = VR3 = 6 V.
+
+IR2 = IR3 = 3 mA.
+
+PR1 = 36 mW.
+
+PR2 = 18 mW.
+
+PR3 = 18 mW.
+
+Ptotal = 72 mW.
+
+### Funcionalidad principal: REDUCCIÓN PROGRESIVA DEL CIRCUITO
+
+Esta debe ser una de las funcionalidades educativas más importantes del laboratorio.
+
+No quiero que la aplicación muestre directamente la solución completa.
+
+El estudiante deberá seleccionar qué resistores pueden combinarse.
+
+Por ejemplo:
+
+1. Seleccionar R2 y R3.
+2. Identificar que están conectados en paralelo.
+3. Elegir la relación matemática correspondiente.
+4. Introducir la resistencia equivalente.
+5. Comprobar el resultado.
+6. Observar cómo el conjunto se sustituye visualmente por R23.
+7. Combinar posteriormente R23 con R1.
+8. Obtener Req.
+9. Calcular la corriente total.
+10. Reconstruir progresivamente las tensiones y corrientes del circuito original.
+
+La aplicación debe mostrar visualmente las tres representaciones:
+
+- Circuito original.
+- Circuito parcialmente reducido.
+- Circuito equivalente final.
+
+Permitir avanzar y retroceder por las etapas de reducción.
+
+No permitir equivalencias eléctricas incorrectas. Cuando el estudiante seleccione resistores que no pueden combinarse directamente, explicar por qué.
+
+### Verificación energética
+
+Incluir un panel que permita comprobar:
+
+Potencia suministrada por la fuente.
+
+Potencia absorbida por cada resistor.
+
+Suma de potencias.
+
+Utilizar una convención de signos consistente.
+
+Con la convención pasiva, la fuente que entrega energía tendrá potencia absorbida negativa y los resistores tendrán potencia absorbida positiva.
+
+Mostrar:
+
+ΣP = 0.
+
+También permitir comparar, en magnitudes positivas, la potencia suministrada con la potencia total disipada.
+
+### Desafíos adicionales
+
+Incorporar problemas de dificultad gradual, por ejemplo:
+
+- Modificar R2 y predecir el cambio de corriente en R3.
+- Determinar la resistencia equivalente sin consultar la solución.
+- Identificar el resistor que disipa mayor potencia.
+- Seleccionar un resistor con potencia nominal adecuada.
+- Determinar la corriente total después de modificar la topología.
+
+La aplicación deberá calcular los resultados correctos en función de los valores actuales, no mediante respuestas estáticas.
+
+## 8. MÓDULO 4: DESAFÍO DE INGENIERÍA — ALIMENTACIÓN DC DE EQUIPOS DE RED
+
+Este módulo debe integrar los conocimientos anteriores en una situación técnica contextualizada.
+
+### Escenario
+
+Una fuente de alimentación de 12 V DC suministra energía a dos módulos tecnológicos de red.
+
+Cada módulo se representa mediante una carga resistiva equivalente de 48 Ω.
+
+Ambas cargas están conectadas en paralelo.
+
+Los conductores de alimentación y sus conexiones se representan mediante una resistencia equivalente de 1 Ω conectada en serie con la asociación de cargas.
+
+Esta resistencia serie representa el efecto agregado de los conductores de ida y retorno y las conexiones.
+
+Es un modelo educativo simplificado, no una representación completa de la electrónica real de un equipo de telecomunicaciones.
+
+### Especificaciones iniciales
+
+Fuente: 12 V DC regulados.
+
+Capacidad nominal máxima de corriente: 0,6 A.
+
+Resistencia de conductores y conexiones: 1 Ω.
+
+Carga A: 48 Ω.
+
+Carga B: 48 Ω.
+
+Tensión mínima requerida por cada carga: 11,4 V.
+
+Los límites deben presentarse como especificaciones hipotéticas del ejercicio, no como normas generales de equipamiento de red.
+
+### Resultados de referencia
+
+Resistencia equivalente de las cargas: 24 Ω.
+
+Resistencia total: 25 Ω.
+
+Corriente suministrada: 0,48 A.
+
+Tensión sobre las cargas: 11,52 V.
+
+Corriente por carga: 0,24 A.
+
+Potencia suministrada: 5,76 W.
+
+Potencia disipada en conductores: 0,2304 W.
+
+Potencia consumida por las dos cargas: 5,5296 W.
+
+El sistema cumple inicialmente las condiciones de corriente nominal y tensión mínima especificadas.
+
+### Decisiones técnicas
+
+El estudiante debe resolver diferentes situaciones.
+
+SITUACIÓN A: VERIFICACIÓN DE OPERACIÓN NORMAL.
+
+Calcular corriente, tensión y potencia.
+
+Determinar si las condiciones de operación son admisibles.
+
+SITUACIÓN B: AUMENTO DE RESISTENCIA DE CONDUCTORES.
+
+Cambiar la resistencia serie de 1 Ω a 2 Ω.
+
+Determinar la nueva corriente y la nueva tensión recibida por las cargas.
+
+Comprobar si se mantiene el mínimo de 11,4 V.
+
+El estudiante debe identificar que las cargas reciben aproximadamente 11,08 V y que el criterio de tensión mínima deja de cumplirse.
+
+SITUACIÓN C: INCORPORACIÓN DE OTRA CARGA.
+
+Permitir conectar una tercera carga resistiva equivalente de 48 Ω en paralelo.
+
+Recalcular resistencia equivalente y corriente requerida.
+
+Con resistencia serie de 1 Ω, la corriente prevista es aproximadamente 0,706 A.
+
+El estudiante deberá detectar que supera la capacidad nominal especificada de la fuente de 0,6 A.
+
+Distinguir claramente entre corriente calculada para un modelo de fuente ideal y capacidad nominal de operación.
+
+Si la demanda excede el límite, marcar el escenario como no admisible. No afirmar que una fuente real necesariamente mantiene 12 V ni que entrega indefinidamente una corriente superior a su capacidad.
+
+SITUACIÓN D: SELECCIÓN DE UNA SOLUCIÓN.
+
+Ofrecer varias opciones técnicas, como:
+
+- Reducir la resistencia de los conductores.
+- Utilizar una fuente cuya capacidad nominal sea suficiente.
+- Reducir la demanda conectada.
+- Mantener la configuración actual.
+
+El estudiante deberá seleccionar una alternativa y justificarla mediante las magnitudes calculadas.
+
+La validación debe considerar todas las restricciones relevantes del escenario.
+
+### Situaciones de diagnóstico
+
+Añadir opcionalmente:
+
+- Circuito abierto en una rama.
+- Cortocircuito virtual de una carga.
+- Conexión incorrecta de instrumento.
+- Polaridad de medición invertida.
+
+IMPORTANTE SOBRE CORTOCIRCUITOS:
+
+No calcular una corriente infinita ni realizar divisiones por cero.
+
+Una fuente ideal de tensión no nula conectada directamente a un cortocircuito ideal produce un modelo incompatible.
+
+Para representar una corriente de fallo finita, utilizar un modelo explícito de resistencia limitadora o interna y distinguirlo del modelo de fuente ideal empleado en funcionamiento normal.
+
+Las condiciones peligrosas deben representarse mediante advertencias y simulaciones virtuales, nunca mediante instrucciones para producir fallas reales.
+
+## 9. INSTRUMENTOS DE MEDICIÓN VIRTUALES
+
+Crear instrumentos reutilizables que puedan utilizarse en los cuatro módulos.
+
+### Voltímetro
+
+Debe conectarse entre dos puntos del circuito.
+
+Mostrar la tensión con signo según la polaridad seleccionada.
+
+Permitir invertir las puntas de medición.
+
+Explicar por qué el signo de la lectura cambia al invertirlas.
+
+En el modelo ideal, el voltímetro debe tener resistencia interna infinita y no alterar el circuito.
+
+### Amperímetro
+
+Debe conectarse en serie con la rama seleccionada.
+
+Permitir elegir una rama e insertar allí el instrumento.
+
+Mostrar la corriente según el sentido de referencia.
+
+Una conexión incorrecta debe generar una advertencia educativa.
+
+No permitir que la conexión de un amperímetro directamente en paralelo con una fuente ideal produzca un cálculo inestable.
+
+### Multímetro virtual
+
+Si resulta viable, integrar ambos modos en un multímetro virtual con selector V DC / A DC.
+
+La interfaz debe explicar que el modo seleccionado determina cómo debe conectarse el instrumento.
+
+No basta con colocar imágenes decorativas de instrumentos. Las mediciones deben provenir del estado eléctrico real del modelo.
+
+## 10. MODO EXPLORACIÓN Y MODO DESAFÍO
+
+Incorporar dos modos de uso.
+
+### MODO EXPLORACIÓN LIBRE
+
+El estudiante puede:
+
+- Modificar parámetros.
+- Observar resultados inmediatamente.
+- Utilizar instrumentos.
+- Mostrar u ocultar ecuaciones.
+- Visualizar las magnitudes eléctricas.
+- Activar o desactivar animaciones.
+- Restablecer los valores iniciales.
+
+Este modo favorece la exploración conceptual.
+
+### MODO DESAFÍO GUIADO
+
+El sistema debe:
+
+1. Presentar una pregunta o problema.
+2. Solicitar una predicción o un resultado numérico.
+3. Ocultar temporalmente la solución correspondiente.
+4. Permitir introducir la respuesta.
+5. Verificarla usando el motor de cálculo.
+6. Mostrar retroalimentación explicativa.
+7. Permitir corregir la respuesta.
+8. Mostrar el procedimiento matemático completo cuando corresponda.
+
+Para respuestas numéricas, establecer una tolerancia razonable que contemple redondeo.
+
+Comprobar las unidades: por ejemplo, reconocer equivalencias entre 0,006 A y 6 mA cuando estén correctamente especificadas.
+
+Incluir ayudas progresivas, no revelar toda la solución en el primer intento incorrecto.
+
+No utilizar un sistema de puntuación que penalice la exploración libre.
+
+## 11. REPRESENTACIÓN VISUAL DE LOS CIRCUITOS
+
+Los diagramas deben asemejarse a esquemas eléctricos profesionales utilizados en ingeniería.
+
+Requisitos:
+
+- Conductores con trazados claros.
+- Símbolos de fuente y resistores reconocibles.
+- Identificadores R1, R2, R3, etc.
+- Valores y unidades visibles.
+- Referencias de corriente.
+- Polaridades de tensión.
+- Nodos de conexión correctamente representados.
+- Interruptores cuyo estado abierto/cerrado sea visualmente inequívoco.
+- Distribución espacial sin cruces innecesarios.
+
+La animación de corriente debe seguir las conexiones eléctricas reales.
+
+En serie, todas las ramas de la trayectoria deben representar la misma corriente.
+
+En paralelo, las indicaciones visuales deben distinguir las intensidades de corriente de cada rama.
+
+En circuitos mixtos, las corrientes deben dividirse y reunirse coherentemente.
+
+Si el estudiante invierte una referencia, debe actualizarse el signo de la magnitud indicada sin modificar artificialmente la solución física.
+
+No animar corriente por ramas abiertas.
+
+Evitar efectos visuales que oculten las conexiones o dificulten interpretar el diagrama.
+
+## 12. VISUALIZACIÓN DE RESULTADOS Y ECUACIONES
+
+Incluir paneles dinámicos que muestren:
+
+- Tensión de la fuente.
+- Resistencia equivalente.
+- Corriente total.
+- Tensiones en resistores.
+- Corrientes individuales.
+- Potencias individuales.
+- Potencia total.
+- Conductancia, cuando corresponda.
+
+Mostrar las expresiones matemáticas correspondientes a los cálculos.
+
+Las ecuaciones deben actualizarse con los valores que el estudiante haya definido.
+
+Por ejemplo, si modifica R1, la expresión de resistencia equivalente debe reflejar el nuevo valor.
+
+Los procedimientos deben presentarse por pasos:
+
+1. Ecuación general.
+2. Identificación de variables.
+3. Sustitución numérica.
+4. Operación.
+5. Resultado con unidades.
+6. Interpretación.
+
+Incorporar un botón "Mostrar desarrollo matemático" y otro "Ocultar desarrollo".
+
+Los gráficos pueden incluir:
+
+- Corriente frente a tensión.
+- Potencia frente a resistencia, indicando las condiciones mantenidas constantes.
+- Comparación de potencias por componente.
+- Distribución de corriente entre ramas.
+- Comparación de tensión disponible frente a tensión mínima requerida.
+
+Los gráficos deben utilizar datos calculados a partir del modelo y actualizarse al modificar parámetros.
+
+No incorporar gráficos por motivos exclusivamente decorativos.
+
+## 13. DISEÑO DE INTERFAZ UX/UI
+
+Deseo una aplicación moderna, profesional, atractiva y apropiada para educación universitaria.
+
+No quiero una interfaz que parezca un cuestionario escolar o una página con grandes bloques de texto.
+
+Diseño recomendado:
+
+Encabezado superior:
+
+Nombre del laboratorio, información de la semana y botón de ayuda.
+
+Navegación:
+
+Pestañas para los cuatro módulos, con identificación clara del módulo seleccionado.
+
+Área principal:
+
+- Zona amplia para visualizar y manipular el circuito.
+- Panel lateral para parámetros y controles.
+- Panel de resultados y mediciones.
+- Espacio para las ecuaciones y la retroalimentación.
+
+El circuito debe ser el elemento visual principal.
+
+Evitar que los controles ocupen la mayor parte de la pantalla.
+
+No desaprovechar grandes márgenes laterales ni espacios vacíos.
+
+La aplicación debe aprovechar adecuadamente el ancho disponible a un zoom del navegador del 100 %.
+
+### Adaptación responsiva
+
+En computadoras de escritorio:
+
+Utilizar una distribución de dos o tres áreas, dando prioridad al circuito.
+
+En tabletas:
+
+Reorganizar los paneles para conservar la legibilidad y permitir la manipulación táctil.
+
+En teléfonos:
+
+Utilizar una organización vertical y controles adaptados al tamaño de pantalla.
+
+Los diagramas eléctricos deben conservar sus proporciones y no deformarse.
+
+Evitar desbordamientos horizontales de la página.
+
+Permitir desplazamiento interno o ampliación del esquema cuando sea necesario.
+
+### Estilo visual
+
+Utilizar una paleta profesional y consistente.
+
+Distinguir visualmente:
+
+- Tensión.
+- Corriente.
+- Resistencia.
+- Potencia.
+
+No depender exclusivamente del color para transmitir información.
+
+Utilizar iconos discretos, tipografía legible y espacios equilibrados.
+
+Incluir botones claros para:
+
+- Restablecer circuito.
+- Mostrar u ocultar mediciones.
+- Mostrar cálculos.
+- Activar o pausar animaciones.
+- Comprobar respuesta.
+- Mostrar pista.
+- Continuar al siguiente desafío.
+
+La navegación debe ser intuitiva sin necesidad de consultar un manual externo.
+
+## 14. REDACCIÓN Y RETROALIMENTACIÓN PEDAGÓGICA
+
+Toda la interfaz debe estar en español.
+
+El lenguaje dirigido al estudiante utilizará siempre el tratamiento respetuoso de USTED.
+
+Ejemplos correctos:
+
+"Observe cómo cambia la corriente".
+
+"Modifique la resistencia R2".
+
+"Calcule la potencia disipada".
+
+"Compruebe su respuesta".
+
+"¿Qué conclusión puede establecer a partir de los resultados?"
+
+No utilizar tuteo.
+
+La retroalimentación debe explicar las razones físicas de los resultados.
+
+No limitarse a mensajes como:
+
+"Correcto".
+
+"Incorrecto".
+
+La aplicación debería explicar, por ejemplo:
+
+"Al aumentar la resistencia equivalente y mantener constante la tensión de alimentación, la corriente disminuye de acuerdo con la Ley de Ohm".
+
+También debe identificar errores habituales:
+
+- Confundir conexiones en serie y paralelo.
+- Sumar directamente resistencias en paralelo.
+- Confundir mA con A.
+- Confundir kΩ con Ω.
+- Invertir referencias de corriente o tensión.
+- Aplicar incorrectamente expresiones de potencia.
+- No comprobar las condiciones nominales de los componentes.
+
+## 15. RIGOR FÍSICO Y MATEMÁTICO
+
+Este requisito es prioritario.
+
+No sacrifiques precisión científica para simplificar la programación.
+
+Implementa un motor de cálculo que respete:
+
+Ley de Ohm.
+
+Relaciones de resistencia equivalente.
+
+Distribución de corriente y tensión.
+
+Conservación de corriente en las conexiones.
+
+Balance algebraico de potencia.
+
+Convención pasiva de signos.
+
+Condiciones de circuito abierto y cortocircuito.
+
+Distingue claramente:
+
+- Potencia absorbida.
+- Potencia suministrada.
+- Magnitud positiva de potencia entregada.
+- Potencia nominal o máxima admisible.
+- Valor calculado bajo un modelo ideal.
+- Condición de operación admisible de un componente real.
+
+Para resistores pasivos positivos, la potencia disipada no puede ser negativa.
+
+El cálculo debe funcionar también cuando el usuario cambie valores y no solamente con los ejemplos iniciales.
+
+Validar los casos límite:
+
+- Resistencias no positivas en componentes resistivos normales.
+- Todas las ramas abiertas.
+- Valores de tensión nulos.
+- Cambios de polaridad de referencia.
+- Resistencias equivalentes próximas a cero.
+- Corrientes que excedan las especificaciones nominales.
+- Valores numéricos extremos.
+
+Representar cortocircuitos y circuitos abiertos como estados topológicos definidos, no como entradas numéricas inválidas.
+
+Todas las unidades deberán ser consistentes.
+
+Utilizar internamente unidades del Sistema Internacional, aplicando las conversiones correspondientes para mostrar resultados con prefijos.
+
+## 16. PRUEBAS DE FUNCIONAMIENTO
+
+Antes de considerar terminada la aplicación, comprueba:
+
+CASO 1. Serie:
+
+12 V, 1 kΩ, 2 kΩ y 3 kΩ.
+
+Req = 6 kΩ.
+
+I = 2 mA.
+
+V1 = 2 V, V2 = 4 V, V3 = 6 V.
+
+CASO 2. Paralelo:
+
+12 V, 6 kΩ, 3 kΩ y 2 kΩ.
+
+Req = 1 kΩ.
+
+Itotal = 12 mA.
+
+CASO 3. Mixto:
+
+12 V, R1 = 1 kΩ, R2 = R3 = 2 kΩ.
+
+Req = 2 kΩ.
+
+Itotal = 6 mA.
+
+Ptotal = 72 mW.
+
+CASO 4. Alimentación DC:
+
+12 V, resistencia serie de 1 Ω y dos cargas de 48 Ω en paralelo.
+
+Req = 25 Ω.
+
+I = 0,48 A.
+
+Vcargas = 11,52 V.
+
+Pfuente entregada = 5,76 W.
+
+Ppérdidas = 0,2304 W.
+
+CASO 5. Aumento de resistencia serie:
+
+Cambiar la resistencia serie a 2 Ω y comprobar que la tensión de carga cae por debajo de 11,4 V.
+
+CASO 6. Carga adicional:
+
+Conectar una tercera carga de 48 Ω en paralelo, manteniendo la resistencia serie de 1 Ω, y comprobar que la corriente prevista supera 0,6 A.
+
+Además, verificar:
+
+- Correcta apertura de interruptores.
+- Medición con polaridad invertida.
+- Ausencia de corriente en ramas abiertas.
+- Actualización de magnitudes al modificar componentes.
+- Balance de potencia.
+- Funcionamiento de desafíos.
+- Visualización responsiva.
+- Ausencia de errores de ejecución.
+
+Si es posible, implementar pruebas automatizadas para el motor matemático.
+
+## 17. REQUISITOS DE ENTREGA
+
+Quiero que IMPLEMENTES la aplicación, no solamente que describas cómo podría desarrollarse.
+
+Genera los componentes, estilos, funciones matemáticas, diagramas y controles necesarios para conseguir un recurso funcional.
+
+No sustituyas funcionalidades solicitadas por botones simulados o elementos decorativos sin comportamiento real.
+
+Si alguna funcionalidad requiere una implementación más compleja, utiliza una arquitectura modular y construye la solución funcional más apropiada.
+
+Prioriza:
+
+1. Motor de cálculo correcto.
+2. Circuitos interactivos reales.
+3. Los cuatro módulos completos.
+4. Mediciones virtuales.
+5. Desafíos y retroalimentación.
+6. Visualizaciones y animaciones.
+7. Diseño profesional y responsivo.
+
+Utiliza los valores numéricos proporcionados como casos de validación, pero el laboratorio debe funcionar con cualquier conjunto de parámetros permitidos.
+
+El resultado debe ser un recurso educativo listo para utilizarse, revisarse y posteriormente publicarse para estudiantes de ingeniería.
+
+Comienza directamente con el diseño y la implementación de la aplicación.
+
+No te limites a elaborar un plan de trabajo, una descripción conceptual o fragmentos aislados de código.
+
+El objetivo final es que el estudiante APRENDA A ANALIZAR CIRCUITOS ELÉCTRICOS MEDIANTE LA EXPERIMENTACIÓN, LA RESOLUCIÓN MATEMÁTICA Y LA TOMA DE DECISIONES TÉCNICAS.

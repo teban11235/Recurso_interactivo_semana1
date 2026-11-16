@@ -1,0 +1,6 @@
+{
+  "name": "Laboratorio Virtual de Circuitos DC — UTPL",
+  "description": "Laboratorio virtual interactivo de análisis, simulación y decisiones técnicas en circuitos eléctricos DC (Semana 1 - UTPL).",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
