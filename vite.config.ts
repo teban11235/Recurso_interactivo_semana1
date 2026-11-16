@@ -5,6 +5,11 @@ import {defineConfig} from 'vite';
 
 export default defineConfig(() => {
   return {
+    // GitHub Pages serves this project from /<repository-name>/.
+    // Keep local development at the site root.
+    base: process.env.GITHUB_ACTIONS
+      ? '/Recurso_interactivo_semana1/'
+      : '/',
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {
