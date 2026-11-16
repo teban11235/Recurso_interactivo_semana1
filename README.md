@@ -1,4 +1,5 @@
 # Laboratorio Virtual de Circuitos DC — UTPL
+**[Abrir la aplicación publicada](https://teban11235.github.io/Recurso_interactivo_semana1/)**
 
 Laboratorio virtual interactivo de análisis, simulación y decisiones técnicas en circuitos eléctricos DC para la asignatura **Circuitos Eléctricos** (Semana 1) de la carrera de **Redes y Analítica de Datos** de la **Universidad Técnica Particular de Loja (UTPL)**.
 
